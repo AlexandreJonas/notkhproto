@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://djkxbjlkhwwj6"]
+
+[ext_resource type="PackedScene" uid="uid://gu4ckxawnf26" path="res://entity/player/player.tscn" id="1_jg112"]
+[ext_resource type="PackedScene" uid="uid://dlm7eftvn4jv8" path="res://entity/enemy/enemy_test.tscn" id="2_5rh8t"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8bsv8"]
+distance = -613.0
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_8bsv8")
+
+[node name="Player" parent="." instance=ExtResource("1_jg112")]
+position = Vector2(114, 98)
+
+[node name="EnemyTest" parent="." instance=ExtResource("2_5rh8t")]
+position = Vector2(686, 117)
