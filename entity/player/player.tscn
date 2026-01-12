@@ -45,20 +45,25 @@ script = ExtResource("4_bgq54")
 fall_state = NodePath("../Fall")
 jump_state = NodePath("../Jump")
 move_state = NodePath("../Move")
+move_speed = 300.0
 
 [node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state")]
 script = ExtResource("5_482rp")
 fall_state = NodePath("../Fall")
 idle_state = NodePath("../Idle")
 jump_state = NodePath("../Jump")
+move_speed = 300.0
 
 [node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "move_state")]
 script = ExtResource("6_wjhpj")
 fall_state = NodePath("../Fall")
 idle_state = NodePath("../Idle")
 move_state = NodePath("../Move")
+jump_force = 400.0
+move_speed = 300.0
 
 [node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state")]
 script = ExtResource("7_2iqu4")
 idle_state = NodePath("../Idle")
 move_state = NodePath("../Move")
+move_speed = 300.0
