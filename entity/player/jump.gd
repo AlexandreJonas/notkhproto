@@ -6,6 +6,8 @@ var fall_state: State
 var idle_state: State
 @export
 var move_state: State
+@export
+var shoot_basic: State
 
 @export
 var jump_force: float = 900.0
@@ -13,6 +15,11 @@ var jump_force: float = 900.0
 func enter() -> void:
 	super()
 	parent.velocity.y = -jump_force
+	
+func process_input(event: InputEvent) -> State:
+	if Input.is_action_just_pressed('shoot_basic'):
+		return shoot_basic
+	return null
 
 func process_physics(delta: float) -> State:
 	parent.velocity += parent.get_gravity() * delta

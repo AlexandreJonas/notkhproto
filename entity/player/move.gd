@@ -13,7 +13,7 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	parent.velocity.y += gravity * delta
+	parent.velocity += parent.get_gravity() * delta
 	
 	var movement = Input.get_axis('move_left', 'move_right') * move_speed
 	

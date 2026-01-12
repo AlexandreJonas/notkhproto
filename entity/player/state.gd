@@ -12,7 +12,8 @@ var gravity: int = 400
 var parent: Player
 
 func enter() -> void:
-	print('OI')
+#	parent.animations.play(animation_name)
+	print(animation_name)
 
 func exit() -> void:
 	pass

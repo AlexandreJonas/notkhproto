@@ -9,6 +9,8 @@ var bullet_path = preload("res://entity/bullet/bullet.tscn")
 
 @onready
 var stateMachine = $StateMachine
+@onready
+var bullet_position = $BulletPosition
 
 func _ready() -> void:
 	stateMachine.init(self)
@@ -36,18 +38,18 @@ func _physics_process(delta: float) -> void:
 		
 	stateMachine.process_physics(delta)
 		
-	if Input.is_action_just_pressed("shoot_basic"):
-		fire()
+	#if Input.is_action_just_pressed("shoot_basic"):
+		#fire()
 
 	#move_and_slide()
 	
 func _process(delta: float) -> void:
 	stateMachine.process_frame(delta)
 
-func fire() -> void:
-	var bullet = bullet_path.instantiate()
-	bullet.direction = rotation
-	bullet.pos = $BulletPosition.global_position
-	bullet.bullet_rotation = global_rotation
-	
-	get_parent().add_child(bullet)
+#func fire() -> void:
+	#var bullet = bullet_path.instantiate()
+	#bullet.direction = rotation
+	#bullet.pos = $BulletPosition.global_position
+	#bullet.bullet_rotation = global_rotation
+	#
+	#get_parent().add_child(bullet)
