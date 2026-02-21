@@ -8,13 +8,17 @@ var idle_state: State
 var jump_state: State
 @export
 var move_state: State
+@export
+var playerScene : CharacterBody2D
+@export
+var bulletPositionScene : Node2D
 
 @onready var bullet_path = preload("res://entity/bullet/bullet.tscn")
 var bullet_position
 
 func enter() -> void:
 	super()
-	bullet_position = parent.bullet_position
+	bullet_position = bulletPositionScene
 	fire()
 
 func process_input(event: InputEvent) -> State:
@@ -28,9 +32,6 @@ func process_input(event: InputEvent) -> State:
 
 func process_physics(delta: float) -> State:
 	#parent.velocity += parent.get_gravity() * delta
-	
-	
-	
 	parent.velocity.y = 0
 	
 	#if Input.is_action_just_pressed('shoot_basic'):
@@ -51,8 +52,8 @@ func process_physics(delta: float) -> State:
 
 func fire() -> void:
 	var bullet = bullet_path.instantiate()
-	bullet.direction = parent.rotation
+	bullet.direction = playerScene.rotation
 	bullet.pos = bullet_position.global_position
-	bullet.bullet_rotation = parent.global_rotation
+	bullet.bullet_rotation = playerScene.global_rotation
 	
-	parent.add_child(bullet)
+	playerScene.get_parent().add_child(bullet)

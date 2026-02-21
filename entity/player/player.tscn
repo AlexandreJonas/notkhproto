@@ -75,10 +75,12 @@ move_state = NodePath("../Move")
 animation_name = "Fall"
 move_speed = 300.0
 
-[node name="ShootBasic" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state", "move_state")]
+[node name="ShootBasic" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state", "move_state", "playerScene", "bulletPositionScene")]
 script = ExtResource("8_4btn6")
 fall_state = NodePath("../Fall")
 idle_state = NodePath("../Idle")
 jump_state = NodePath("../Jump")
 move_state = NodePath("../Move")
+playerScene = NodePath("../..")
+bulletPositionScene = NodePath("../../BulletPosition")
 animation_name = "ShootBasic"
