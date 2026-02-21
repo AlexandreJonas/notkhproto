@@ -5,6 +5,11 @@ var bullet_rotation : float
 var direction : float
 var speed = 2000
 
+@export var is_penetrate : bool = false
+
+@onready
+var deleteTimer = $DeleteTimer
+
 func _ready() -> void:
 	global_position=pos
 	global_rotation=bullet_rotation
@@ -12,3 +17,12 @@ func _ready() -> void:
 func _physics_process(delta) -> void:
 	velocity = Vector2(speed,0).rotated(bullet_rotation)
 	move_and_slide()
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	deleteTimer.start()
+	
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	deleteTimer.stop()
+	
+func _on_delete_timer_timeout() -> void:
+	queue_free()
