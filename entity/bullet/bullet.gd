@@ -36,7 +36,8 @@ func _on_hurtbox_area_area_entered(area: Area2D) -> void:
 		deleteOnHitTimer.start()
 	
 func delete_bullet() -> void:
-	queue_free()
+	#queue_free()
+	pass
 	
 func _on_delete_on_hit_timer_timeout() -> void:
 	delete_bullet()

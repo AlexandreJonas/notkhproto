@@ -12,6 +12,8 @@ var stateMachine = $StateMachine
 @onready
 var bullet_position = $BulletPosition
 
+@export var is_penetrate : bool = true
+
 func _ready() -> void:
 	stateMachine.init(self)
 	
