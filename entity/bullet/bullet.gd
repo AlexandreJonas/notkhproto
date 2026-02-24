@@ -10,9 +10,6 @@ var speed = 2000
 @onready
 var deleteTimer = $DeleteTimer
 
-@onready
-var deleteOnHitTimer = $DeleteOnHitTimer
-
 func _ready() -> void:
 	global_position=pos
 	global_rotation=bullet_rotation
@@ -29,15 +26,6 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	
 func _on_delete_timer_timeout() -> void:
 	delete_bullet()
-
-
-func _on_hurtbox_area_area_entered(area: Area2D) -> void:
-	if not is_penetrate:
-		deleteOnHitTimer.start()
 	
 func delete_bullet() -> void:
-	#queue_free()
-	pass
-	
-func _on_delete_on_hit_timer_timeout() -> void:
-	delete_bullet()
+	queue_free()

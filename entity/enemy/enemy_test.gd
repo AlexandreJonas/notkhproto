@@ -18,7 +18,10 @@ func _process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	# Handle jump.
 	velocity.y = JUMP_VELOCITY
+	
+	delete_incoming_projectile(body)
 
-	if not body.is_penetrate:
-		body.queue_free()
-		
+func delete_incoming_projectile(projectile : Node2D) -> void:
+	if 'is_penetrate' in projectile:
+		if not projectile.is_penetrate:
+			projectile.queue_free()
